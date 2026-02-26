@@ -131,7 +131,7 @@
 
 <main class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <video autoplay loop muted playsinline class="absolute z-0 w-auto min-w-full min-h-full max-w-none object-cover">
-            <source src="assets/hero-bg.mp4" type="video/mp4">
+            <source src="assets/hero.mp4" type="video/mp4">
         </video>
         
         <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#0d1117]/90 via-transparent to-[#0d1117] pointer-events-none"></div>
