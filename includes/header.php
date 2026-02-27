@@ -1,8 +1,16 @@
-
 <?php include('preloader.php') ?>
 <script>
-    
+    // Logic for the mobile menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.querySelector('.nga-mobile-toggle');
+        const nav = document.querySelector('.nga-nav');
+        
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    });
 </script>
+
 <style>
     /* * NGA-Coding Academy: IDE/Developer Header
      * Theme: Modern Floating Glass / VS Code Aesthetic
@@ -18,10 +26,11 @@
         
         /* IDE Syntax Colors */
         --syntax-blue: #79c0ff;
-        --syntax-yellow: #d2a8ff; /* purple-ish for functions */
+        --syntax-yellow: #d2a8ff; 
         --syntax-orange: #ffa657;
         --syntax-cyan: #39c5cf;
         --syntax-green: #7ee787;
+        --syntax-purple: #bd93f9; /* New color for the external link */
     }
 
     /* Floating Header Container */
@@ -33,32 +42,31 @@
         display: flex;
         justify-content: center;
         z-index: 9999;
-        pointer-events: none; /* Lets clicks pass through the wrapper */
+        pointer-events: none;
     }
 
     .nga-header {
-        pointer-events: auto; /* Re-enables clicks for the nav itself */
+        pointer-events: auto;
         width: 95%;
         max-width: 1200px;
         background: var(--bg-glass);
         backdrop-filter: blur(20px) saturate(200%);
         -webkit-backdrop-filter: blur(20px) saturate(200%);
         border: 1px solid var(--border-glass);
-        border-radius: 100px; /* Pill shape */
+        border-radius: 100px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         font-family: 'Inter', sans-serif;
         transition: all 0.3s ease;
     }
 
     .nga-header-container {
-        padding: 0 1.5rem 0 0.5rem; /* Tighter padding for pill */
+        padding: 0 1.5rem 0 0.5rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 64px;
     }
 
-    /* Clean Logo Hover (No Spinning) */
     .nga-brand {
         display: flex;
         align-items: center;
@@ -92,9 +100,7 @@
         letter-spacing: -0.5px;
     }
 
-    .nga-brand-text .punct {
-        color: var(--text-muted);
-    }
+    .nga-brand-text .punct { color: var(--text-muted); }
 
     /* IDE Style Navigation Links */
     .nga-nav {
@@ -114,15 +120,16 @@
         align-items: center;
     }
 
-    /* Syntax Highlighting Colors */
+    /* Syntax Highlighting Classes */
     .nga-nav-link .file { color: var(--syntax-blue); }
     .nga-nav-link .ext { color: var(--syntax-orange); }
     .nga-nav-link .func { color: var(--syntax-yellow); }
     .nga-nav-link .arr { color: var(--syntax-cyan); }
     .nga-nav-link .obj { color: var(--syntax-green); }
+    .nga-nav-link .db { color: var(--syntax-purple); } /* External link style */
     .nga-nav-link .punct { color: var(--text-muted); transition: color 0.3s ease; }
 
-    /* The Terminal Cursor Hover You Liked */
+    /* Terminal Cursor Effects */
     .nga-nav-link::before {
         content: '>';
         color: var(--syntax-green);
@@ -143,22 +150,10 @@
         animation: blink 1s step-end infinite;
     }
 
-    .nga-nav-link:hover {
-        color: var(--text-main);
-    }
-
-    .nga-nav-link:hover .punct {
-        color: var(--text-main);
-    }
-
-    .nga-nav-link:hover::before {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .nga-nav-link:hover::after {
-        opacity: 1;
-    }
+    .nga-nav-link:hover { color: var(--text-main); }
+    .nga-nav-link:hover .punct { color: var(--text-main); }
+    .nga-nav-link:hover::before { opacity: 1; transform: translateX(0); }
+    .nga-nav-link:hover::after { opacity: 1; }
 
     @keyframes blink {
         0%, 100% { opacity: 0; }
@@ -182,10 +177,7 @@
         gap: 0.5rem;
     }
 
-    .nga-btn-glow::before {
-        content: '~/';
-        color: var(--text-muted);
-    }
+    .nga-btn-glow::before { content: '~/'; color: var(--text-muted); }
 
     .nga-btn-glow:hover {
         background: rgba(126, 231, 135, 0.2);
@@ -195,7 +187,6 @@
         color: white;
     }
 
-    /* Mobile Menu Toggle */
     .nga-mobile-toggle {
         display: none;
         background: none;
@@ -206,8 +197,22 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 900px) {
-        .nga-nav { display: none; }
+    @media (max-width: 1024px) {
+        .nga-nav { 
+            display: none; 
+            position: absolute;
+            top: 80px;
+            background: var(--bg-glass);
+            flex-direction: column;
+            width: 100%;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(20px);
+            left: 0;
+            gap: 1.5rem;
+        }
+        .nga-nav.active { display: flex; }
         .nga-header-container { padding: 0 1rem; }
         .nga-mobile-toggle { display: block; }
         .nga-header { border-radius: 16px; width: calc(100% - 2rem); }
@@ -238,6 +243,9 @@
                 </a>
                 <a href="innovation.php" class="nga-nav-link">
                     <span class="obj">innovation</span><span class="punct">{}</span>
+                </a>
+                <a href="http://new-generation-academics.wuaze.com/" class="nga-nav-link" target="_blank">
+                    <span class="db">db</span><span class="punct">.</span><span class="func">connect</span><span class="punct">()</span>
                 </a>
             </nav>
 
