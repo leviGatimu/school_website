@@ -245,7 +245,7 @@
                     <span class="obj">innovation</span><span class="punct">{}</span>
                 </a>
                 <a href="http://new-generation-academics.wuaze.com/" class="nga-nav-link" target="_blank">
-                    <span class="db">db</span><span class="punct">.</span><span class="func">connect</span><span class="punct">()</span>
+                    <span class="db">Academic</span><span class="punct">.</span><span class="func">System</span><span class="punct">()</span>
                 </a>
             </nav>
 
